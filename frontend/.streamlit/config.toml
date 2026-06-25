@@ -1,7 +1,0 @@
-[theme]
-base = "dark"
-primaryColor = "#00D4FF"  # A cool "satellite cyan" color
-backgroundColor = "#0E1117" # Deep mission-control black
-secondaryBackgroundColor = "#1E2128" # Slightly lighter dark gray for tables
-textColor = "#FAFAFA"
-font = "sans serif"
