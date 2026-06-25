@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environments
+venv/
+ENV/
+env/
+
+# Local configuration and secrets
+.env
+
+# Streamlit local configuration (optional)
+.streamlit/
