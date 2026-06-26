@@ -1,9 +1,7 @@
 from sqlmodel import SQLModel, create_engine, Session
 from app.config import settings
 
-# 1. Create the permanent highway (Engine) using the URL from your config file
-# echo=True tells SQLModel to print out the raw SQL statements to your terminal 
-# so we can watch exactly what it's doing behind the scenes!
+
 
 engine = create_engine(settings.DATABASE_URL, echo=True)
 

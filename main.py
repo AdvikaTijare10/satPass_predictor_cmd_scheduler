@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from app.database_connection import engine
 from app.create_tables.cmds import Command
 from app.create_tables.pass_window import PassWindow
-from core.scheduler import run_scheduler_engine
+from core.scheduler import run_scheduler_engine, sync_mission_status
 from app.populate_tables.pass_window import populate_pass_window,get_pass
 
 app = FastAPI(title="Satellite Ground Station API")
@@ -62,12 +62,16 @@ def get_future_passes():
 # 4. Get scheduled timeline (GET)
 @app.get("/commands/timeline")
 def get_scheduled_timeline():
-    try:
-        with Session(engine) as session:
-            statement = select(Command).where(Command.status == "SCHEDULED").order_by(Command.scheduled_start_offset_sec.asc())
-            results = session.exec(statement).all()
-            return [c.model_dump() for c in results]
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    # 1. ALWAYS SYNC FIRST
+    sync_mission_status() 
+    
+    # 2. THEN FETCH
+    with Session(engine) as session:
+        statement = select(Command).order_by(Command.created_at.desc())
+        results = session.exec(statement).all()
+        return [c.model_dump() for c in results]
+   
+
+
 
 
