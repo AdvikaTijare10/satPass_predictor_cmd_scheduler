@@ -1,6 +1,6 @@
 # 🛰️ Satellite Ground Station Operations Scheduler
 
-A backend-driven satellite mission planning system that calculates real satellite communication windows, schedules mission commands based on available pass duration, and visualizes the complete workflow through an interactive dashboard.
+A backend-driven satellite mission planning system that calculates EOS-4 communication windows, schedules mission commands based on available pass duration, and visualizes the complete workflow through an interactive dashboard.
 
 The project uses real TLE data from CelesTrak, performs orbital propagation using Skyfield, stores mission data in PostgreSQL (AWS RDS), and exposes REST APIs through FastAPI which are consumed by a Streamlit frontend.
 
