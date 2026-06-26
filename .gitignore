@@ -13,4 +13,4 @@ env/
 .env
 
 # Streamlit local configuration (optional)
-.streamlit/
+frontend/.streamlit/config.toml
